@@ -30,6 +30,10 @@ public class SysDeptController {
 		return prefix + "/sysDept";
 	}
 
+	/**
+	 * 部门树节点显示
+	 * @return
+	 */
 	@RequestMapping("/tree")
 	@ResponseBody
 	public Object tree(){
