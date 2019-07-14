@@ -18,7 +18,7 @@ import java.util.List;
  * @data 2019/6/23 16:33
  */
 @Controller
-@RequestMapping("/sys/dept")
+@RequestMapping("/system/dept")
 public class SysDeptController {
 
 	private String prefix = "system/dept";
@@ -52,6 +52,15 @@ public class SysDeptController {
 		Tree<SysDept> tree = BuildTree.buildTree(trees);
 		System.out.println(tree.toString());
 		return tree;
+	}
+
+	/**
+	 * 部门树 html
+	 * @return
+	 */
+	@RequestMapping("/deptTreeView")
+	public Object deptTreeView(){
+		return prefix + "/deptTree";
 	}
 
 }

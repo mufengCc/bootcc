@@ -1,4 +1,4 @@
-var prefix = "/sys/user"
+var prefix = "/system/user"
 $(function () {
     alert(111);
     getTreeData();
@@ -9,7 +9,7 @@ $(function () {
 function getTreeData(){
     $.ajax({
         type : "post",
-        url : "/sys/dept/tree",
+        url : "/system/dept/tree",
         success : function(tree) {
             loadTree(tree);
         }

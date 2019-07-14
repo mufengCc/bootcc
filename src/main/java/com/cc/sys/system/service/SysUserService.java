@@ -17,4 +17,6 @@ public interface SysUserService {
 	List<SysUser> getListUser(Map<String,Object> map);
 
 	int getCount(Map<String,Object> map);
+
+	Object saveUser(SysUser sysUser);
 }

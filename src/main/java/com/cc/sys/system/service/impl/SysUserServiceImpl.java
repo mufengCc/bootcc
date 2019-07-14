@@ -4,6 +4,7 @@ import com.cc.sys.Base.Tree;
 import com.cc.sys.system.entity.SysUser;
 import com.cc.sys.system.mapper.SysUserMapper;
 import com.cc.sys.system.service.SysUserService;
+import org.omg.CORBA.OBJ_ADAPTER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +33,16 @@ public class SysUserServiceImpl implements SysUserService {
 	public int getCount(Map<String, Object> map) {
 		int userCount = sysUserMapper.getCount(map);
 		return userCount;
+	}
+
+	/**
+	 * 保存用户
+	 * @param sysUser
+	 * @return
+	 */
+	@Override
+	public Object saveUser(SysUser sysUser) {
+		int i = sysUserMapper.insertSelective(sysUser);
+		return i;
 	}
 }

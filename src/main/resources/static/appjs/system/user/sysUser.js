@@ -1,15 +1,15 @@
 /*$(document).ready(function () {
 
 });*/
-var prefix = "/sys/user";
+var prefix = "/system/user";
 $(function () {
     getTreeData();  //得到部门树
     load("");       //加载用户数据Grid
 });
 function getTreeData(){
     $.ajax({
-        type : "post",
-        url : "/sys/dept/tree",
+        type : "get",
+        url : "/system/dept/tree",
         success : function(tree) {
             loadTree(tree);
         }
@@ -20,10 +20,14 @@ function loadTree(tree) {
         'core' : {
             'data' : tree
         },
-        "plugins" : [ "search"]
+        "plugins" : [ "search", "state"],
+        "state" : {
+            "opened":true,
+        }
     });
-    $('#jsTree').jstree().open_all();
 }
+
+/**  树的点击事件  **/
 $('#jsTree').on("changed.jstree", function (e, data) {
     debugger
     console.log(data.selected);

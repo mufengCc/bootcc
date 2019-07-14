@@ -3,16 +3,15 @@ package com.cc.sys.system.controller;
 import com.cc.sys.system.entity.SysUser;
 import com.cc.sys.system.service.SysUserService;
 import com.cc.sys.util.PageUtils;
-import lombok.extern.java.Log;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.omg.CORBA.OBJ_ADAPTER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ import java.util.Map;
  * @data 2019/6/30 15:54
  */
 @Controller
-@RequestMapping("/sys/user")
+@RequestMapping("/system/user")
 public class SysUserController {
 
 	private String prefix = "system/user";
@@ -50,6 +49,19 @@ public class SysUserController {
 		//List<RoleDO> roles = roleService.list();
 		//model.addAttribute("roles", roles);
 		return prefix + "/add";
+	}
+
+	@RequestMapping("/save")
+	@ResponseBody
+	public Object saveUser(SysUser sysUser){
+		String name = sysUser.getName();
+		sysUser.setOperateIp("127.0.0.1");
+		sysUser.setOperateTime(new Date());
+		Object o = sysUserService.saveUser(sysUser);
+		System.out.println("用户名："+name);
+		Map<String,Object> cMap = new HashMap<>();
+		cMap.put("code","0");
+		return cMap;
 	}
 
 }
