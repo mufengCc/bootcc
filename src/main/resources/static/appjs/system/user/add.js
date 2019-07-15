@@ -51,6 +51,7 @@ function save() {
 
 }
 
+
 function validateRule() {
     var icon = "<i class='fa fa-times-circle'></i> ";
     $("#signupForm").validate({

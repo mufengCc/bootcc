@@ -20,10 +20,7 @@ function loadTree(tree) {
         'core' : {
             'data' : tree
         },
-        "plugins" : [ "search", "state"],
-        "state" : {
-            "opened":true,
-        }
+        "plugins" : [ "search"],
     });
 }
 
@@ -33,7 +30,27 @@ $('#jsTree').on("changed.jstree", function (e, data) {
     console.log(data.selected);
     console.log(e);
     console.log(data);
+
+    if (data.selected == -1) {
+        var opt = {
+            query : {
+                deptId : '',
+            }
+        };
+        $('#exampleTable').bootstrapTable('refresh', opt);
+    } else {
+        var opt = {
+            query : {
+                deptId : data.selected[0],
+            }
+        }
+        $('#exampleTable').bootstrapTable('refresh',opt);
+    }
+
 });
+function reLoad() {
+    $('#exampleTable').bootstrapTable('refresh');
+}
 
 function load(deptId) {
     $('#exampleTable').bootstrapTable(
@@ -78,8 +95,21 @@ function load(deptId) {
                         checkbox : true
                     },
                     {
-                        field : 'userId', // 列字段名
-                        title : '序号' // 列标题
+                      field : 'id',
+                      title : '主键ID',
+                      visible : false,
+                    },
+                    {
+                        field : 'Number',
+                        title : '序号',
+                        align: 'center',
+                        width: 20,
+                        formatter : function(value, row, index) {
+                            //return index + 1;
+                            var pageSize=$('#exampleTable').bootstrapTable('getOptions').pageSize;//通过表的#id 可以得到每页多少条
+                            var pageNumber=$('#exampleTable').bootstrapTable('getOptions').pageNumber;//通过表的#id 可以得到当前第几页
+                            return pageSize * (pageNumber - 1) + index + 1;//返回每条的序号： 每页条数 * （当前页 - 1 ）+ 序号
+                        }
                     },
                     {
                         field : 'name',
@@ -107,17 +137,17 @@ function load(deptId) {
                     },
                     {
                         title : '操作',
-                        field : 'id',
+                        field : '',
                         align : 'center',
                         formatter : function(value, row, index) {
                             var e = '<a  class="btn btn-primary btn-sm " href="#" mce_href="#" title="编辑" onclick="edit(\''
-                                + row.userId
+                                + row.id
                                 + '\')"><i class="fa fa-edit "></i></a> ';
                             var d = '<a class="btn btn-warning btn-sm " href="#" title="删除"  mce_href="#" onclick="remove(\''
-                                + row.userId
+                                + row.id
                                 + '\')"><i class="fa fa-remove"></i></a> ';
                             var f = '<a class="btn btn-success btn-sm " href="#" title="重置密码"  mce_href="#" onclick="resetPwd(\''
-                                + row.userId
+                                + row.id
                                 + '\')"><i class="fa fa-key"></i></a> ';
                             return e + d + f;
                         }

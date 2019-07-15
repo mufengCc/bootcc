@@ -172,15 +172,40 @@
       operate_ip = #{operateIp,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-    <select id="getListUser" resultMap="BaseResultMap" parameterType="java.util.Map" >
-        select
-        <include refid="Base_Column_List" />
-        from sys_user
-    </select>
 
-    <select id="getCount" parameterType="java.util.Map" resultType="int">
-        select
-          count(*)
-          from sys_user
-    </select>
+  <sql id="listWhere">
+    <where>
+      <if test="userId != null and userId != ''">and user_id = #{userId}</if>
+      <if test="username != null and username != ''">and username = #{username}</if>
+      <if test="name != null and name != ''">and name = #{name}</if>
+      <if test="deptId != null and deptId != ''">and dept_id = #{deptId}</if>
+    </where>
+  </sql>
+
+  <select id="getListUser" resultMap="BaseResultMap" parameterType="java.util.Map" >
+      select
+      <include refid="Base_Column_List" />
+      from sys_user
+      <include refid="listWhere"></include>
+    <choose>
+      <when test="sort != null and sort.trim() != ''">
+        order by ${sort} ${order}
+      </when>
+      <otherwise>
+        order by id
+      </otherwise>
+    </choose>
+    <if test="offset != null and limit != null">
+      limit ${offset}, ${limit}
+    </if>
+
+  </select>
+
+  <select id="getCount" parameterType="java.util.Map" resultType="int">
+      select
+        count(*)
+        from sys_user
+    <include refid="listWhere"></include>
+  </select>
+
 </mapper>

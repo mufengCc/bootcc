@@ -36,9 +36,11 @@ public class SysUserController {
 
 	@RequestMapping("/list")
 	@ResponseBody
-	public PageUtils list(){
+	public PageUtils list(@RequestParam Map<String,Object> params){
+		Object deptId = params.get("deptId");
+		System.out.println(deptId);
 		Map<String,Object> paramMap = new HashMap<>();
-		List<SysUser> sysUserList = sysUserService.getListUser(paramMap);
+		List<SysUser> sysUserList = sysUserService.getListUser(params);
 		int total = sysUserService.getCount(paramMap);
 		PageUtils pageUtil = new PageUtils(sysUserList, total);
 		return pageUtil;
