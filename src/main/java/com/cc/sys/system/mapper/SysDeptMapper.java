@@ -4,6 +4,7 @@ import com.cc.sys.system.entity.SysDept;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface SysDeptMapper {
@@ -20,4 +21,8 @@ public interface SysDeptMapper {
     int updateByPrimaryKey(SysDept record);
 
     List<SysDept> getListOrderBySeq();
+
+    List<SysDept> getListDept(Map<String,Object> map);
+
+    int getCount(Map<String,Object> map);
 }

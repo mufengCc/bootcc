@@ -146,4 +146,17 @@
       operate_ip = #{operateIp,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+    <select id="getListDept" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List" />
+        from sys_dept
+
+        <if test="offset != null and limit != null">
+            limit ${offset}, ${limit}
+        </if>
+    </select>
+    <select id="getCount" resultType="int" parameterType="java.util.Map">
+        select count(*) from sys_dept
+    </select>
 </mapper>

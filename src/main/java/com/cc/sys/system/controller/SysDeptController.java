@@ -4,14 +4,17 @@ import com.cc.sys.Base.BuildTree;
 import com.cc.sys.Base.Tree;
 import com.cc.sys.system.entity.SysDept;
 import com.cc.sys.system.mapper.SysDeptMapper;
+import com.cc.sys.system.service.SysDeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Cc
@@ -24,6 +27,8 @@ public class SysDeptController {
 	private String prefix = "system/dept";
 	@Autowired
 	private SysDeptMapper sysDeptMapper;
+	@Autowired
+	private SysDeptService sysDeptService;
 
 	@GetMapping
 	public String index(){
@@ -61,6 +66,13 @@ public class SysDeptController {
 	@RequestMapping("/deptTreeView")
 	public Object deptTreeView(){
 		return prefix + "/deptTree";
+	}
+
+	@RequestMapping("/getListDept")
+	@ResponseBody
+	public Object getListDept(@RequestParam Map<String,Object> map){
+		List<SysDept> listDept = sysDeptService.getListDept(map);
+		return listDept;
 	}
 
 }
