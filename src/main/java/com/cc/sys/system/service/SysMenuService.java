@@ -14,7 +14,12 @@ import java.util.Map;
 @Service
 public interface SysMenuService {
 
-	public Tree<SysMenu> getMenuTree(Map<String,Object> map);
+	Tree<SysMenu> getMenuTree(Map<String,Object> map);
 
-	public List<Tree<SysMenu>> getMenuTreeList(Map<String,Object> map);
+	List<Tree<SysMenu>> getMenuTreeList(Map<String,Object> map);
+
+	List<SysMenu> getListMenu(Map<String,Object> map);
+
+	int getCount(Map<String,Object> map);
+
 }

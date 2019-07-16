@@ -45,11 +45,6 @@ function load(id) {
                         checkbox : true
                     },
                     {
-                      field : 'id',
-                      title : '主键ID',
-                      visible : false,
-                    },
-                    {
                         field : 'Number',
                         title : '序号',
                         align: 'center',

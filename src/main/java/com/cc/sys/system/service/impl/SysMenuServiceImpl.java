@@ -28,7 +28,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 	@Override
 	public Tree<SysMenu> getMenuTree(Map<String,Object> map) {
 		List<Tree<SysMenu>> trees = new ArrayList<>();
-		List<SysMenu> list = sysMenuMapper.getList(map);
+		List<SysMenu> list = sysMenuMapper.getListMenu(map);
 		for (SysMenu menu : list){
 			Tree<SysMenu> tree = new Tree<>();
 			tree.setId(menu.getMenuId().toString());
@@ -48,7 +48,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 	@Override
 	public List<Tree<SysMenu>> getMenuTreeList(Map<String, Object> map) {
 		List<Tree<SysMenu>> trees = new ArrayList<>();
-		List<SysMenu> list = sysMenuMapper.getList(map);
+		List<SysMenu> list = sysMenuMapper.getListMenu(map);
 		for (SysMenu menu : list){
 			Tree<SysMenu> tree = new Tree<>();
 			tree.setId(menu.getMenuId().toString());
@@ -64,5 +64,17 @@ public class SysMenuServiceImpl implements SysMenuService {
 		List<Tree<SysMenu>> treeList = BuildTree.buildList(trees, "0");
 		System.out.println(treeList.toString());
 		return treeList;
+	}
+
+	@Override
+	public List<SysMenu> getListMenu(Map<String, Object> map) {
+		List<SysMenu> listMenu = sysMenuMapper.getListMenu(map);
+		return listMenu;
+	}
+
+	@Override
+	public int getCount(Map<String, Object> map) {
+		int count = sysMenuMapper.getCount(map);
+		return count;
 	}
 }

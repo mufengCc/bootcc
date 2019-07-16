@@ -150,10 +150,18 @@
     where menu_id = #{menuId,jdbcType=BIGINT}
   </update>
 
-    <select id="getList" parameterType="java.util.Map" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from sys_menu
-        order by order_num
-    </select>
+  <select id="getListMenu" parameterType="java.util.Map" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from sys_menu
+      order by order_num
+    <if test="offset != null and limit != null">
+      limit ${offset}, ${limit}
+    </if>
+  </select>
+  <select id="getCount" resultType="int">
+    select
+    count(*)
+    from sys_menu
+  </select>
 </mapper>

@@ -20,5 +20,7 @@ public interface SysMenuMapper {
 
     int updateByPrimaryKey(SysMenu record);
 
-    List<SysMenu> getList(Map<String,Object> map);
+    List<SysMenu> getListMenu(Map<String,Object> map);
+
+    int getCount(Map<String,Object> map);
 }
