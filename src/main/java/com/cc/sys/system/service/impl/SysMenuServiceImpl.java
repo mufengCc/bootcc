@@ -19,7 +19,7 @@ import java.util.Map;
  * @data 2019/6/27 13:47
  */
 @Service
-public class SysmentServiceImpl implements SysMenuService {
+public class SysMenuServiceImpl implements SysMenuService {
 
 	@Autowired
 	private SysMenuMapper sysMenuMapper;

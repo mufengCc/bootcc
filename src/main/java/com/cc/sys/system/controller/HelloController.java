@@ -37,7 +37,7 @@ public class HelloController {
 		Tree<SysMenu> menuTree = sysMenuService.getMenuTree(cMap);
 		model.addAttribute("AA","占山");
 		model.addAttribute("menus",menuTree);
-		return "/index";
+		return "/index_v2";
 	}
 
 
