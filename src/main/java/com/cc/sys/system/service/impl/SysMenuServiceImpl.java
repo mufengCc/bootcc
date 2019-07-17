@@ -31,7 +31,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 		List<SysMenu> list = sysMenuMapper.getListMenu(map);
 		for (SysMenu menu : list){
 			Tree<SysMenu> tree = new Tree<>();
-			tree.setId(menu.getMenuId().toString());
+			tree.setId(menu.getId().toString());
 			tree.setParentId(menu.getParentId().toString());
 			tree.setText(menu.getName());
 			Map<String, Object> attributes = new HashMap<>(16);
@@ -51,7 +51,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 		List<SysMenu> list = sysMenuMapper.getListMenu(map);
 		for (SysMenu menu : list){
 			Tree<SysMenu> tree = new Tree<>();
-			tree.setId(menu.getMenuId().toString());
+			tree.setId(menu.getId().toString());
 			tree.setParentId(menu.getParentId().toString());
 			tree.setText(menu.getName());
 			Map<String, Object> attributes = new HashMap<>(16);

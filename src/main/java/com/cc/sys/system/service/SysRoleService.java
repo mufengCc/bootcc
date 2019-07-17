@@ -17,4 +17,5 @@ public interface SysRoleService {
 
 	int getCount(Map<String,Object> map);
 
+	SysRole getRoleById(String id);
 }

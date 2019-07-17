@@ -3,7 +3,7 @@ package com.cc.sys.system.entity;
 import java.util.Date;
 
 public class SysMenu {
-    private Long menuId;
+    private Long id;
 
     private Long parentId;
 
@@ -23,12 +23,12 @@ public class SysMenu {
 
     private Date gmtModified;
 
-    public Long getMenuId() {
-        return menuId;
+    public Long getId() {
+        return id;
     }
 
-    public void setMenuId(Long menuId) {
-        this.menuId = menuId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getParentId() {

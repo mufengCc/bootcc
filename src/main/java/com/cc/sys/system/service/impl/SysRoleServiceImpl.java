@@ -30,4 +30,10 @@ public class SysRoleServiceImpl implements SysRoleService {
 		int count = sysRoleMapper.getCount(map);
 		return count;
 	}
+
+	@Override
+	public SysRole getRoleById(String id){
+		SysRole sysRole = sysRoleMapper.selectByPrimaryKey(Integer.parseInt(id));
+		return sysRole;
+	}
 }

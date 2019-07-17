@@ -5,10 +5,8 @@ import com.cc.sys.system.service.SysRoleService;
 import com.cc.sys.util.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -38,6 +36,22 @@ public class SysRoleController {
 		int count = sysRoleService.getCount(params);
 		PageUtils pageUtils = new PageUtils(listRole,count);
 		return pageUtils;
+	}
+
+	/**
+	 * @Description 角色编辑
+	 * @param:
+	 * @param id
+	 * @param model
+	 * @return java.lang.Object
+	 * @author Cc
+	 * @date 2019/7/17 13:57
+	 */
+	@RequestMapping("/editRole/{id}")
+	public Object edit(@PathVariable("id") Long id, Model model){
+		SysRole sysRole = sysRoleService.getRoleById(id.toString());
+		model.addAttribute("role",sysRole);
+		return preix + "/edit";
 	}
 
 

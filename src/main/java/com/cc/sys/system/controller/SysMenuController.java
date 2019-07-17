@@ -1,5 +1,6 @@
 package com.cc.sys.system.controller;
 
+import com.cc.sys.Base.Tree;
 import com.cc.sys.system.entity.SysMenu;
 import com.cc.sys.system.service.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,13 @@ public class SysMenuController {
 	public Object list(@RequestParam Map<String, Object> params){
 		List<SysMenu> listMenu = sysMenuService.getListMenu(params);
 		return listMenu;
+	}
+
+	@RequestMapping("/treeMenu")
+	@ResponseBody
+	public Object treeMenu(@RequestParam Map<String,Object> params){
+		Tree<SysMenu> menuTree = sysMenuService.getMenuTree(params);
+		return menuTree;
 	}
 
 
