@@ -2,12 +2,14 @@ package com.cc.sys.system.controller;
 
 import com.cc.sys.system.entity.SysRole;
 import com.cc.sys.system.service.SysRoleService;
+import com.cc.sys.util.BaseRequestUtils;
 import com.cc.sys.util.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +19,7 @@ import java.util.Map;
  */
 @RequestMapping("/system/role")
 @Controller
-public class SysRoleController {
+public class SysRoleController extends BaseRequestUtils {
 
 	final private String preix = "system/role";
 
@@ -31,7 +33,9 @@ public class SysRoleController {
 
 	@RequestMapping("/list")
 	@ResponseBody
-	public Object list(@RequestParam Map<String, Object> params){
+	public Object list(@RequestParam Map<String, Object> params, HttpServletRequest request){
+		Object userName = request.getSession().getAttribute("userName");
+		System.out.println(userName.toString());
 		List<SysRole> listRole = sysRoleService.getListRole(params);
 		int count = sysRoleService.getCount(params);
 		PageUtils pageUtils = new PageUtils(listRole,count);
