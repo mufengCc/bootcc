@@ -15,7 +15,7 @@ public class User {
     }
 
     public void show2() {
-        System.out.println("我是");
+        System.out.println("我是陈哈哈");
     }
 
 }
