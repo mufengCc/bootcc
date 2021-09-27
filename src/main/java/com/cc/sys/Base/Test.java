@@ -13,4 +13,9 @@ public class Test {
     public void show_1() {
         System.out.println("第二次提交");
     }
+
+    public void show2() {
+        System.out.println("你");
+    }
+
 }
