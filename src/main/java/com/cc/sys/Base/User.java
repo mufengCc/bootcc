@@ -14,4 +14,8 @@ public class User {
         System.out.println("我的用户信息");
     }
 
+    public void show2() {
+        System.out.println("我是");
+    }
+
 }
