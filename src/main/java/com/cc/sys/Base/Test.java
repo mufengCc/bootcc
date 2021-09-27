@@ -15,7 +15,7 @@ public class Test {
     }
 
     public void show2() {
-        System.out.println("我是陈哈哈");
+        System.out.println("你猜猜我是谁");
     }
 
 }
