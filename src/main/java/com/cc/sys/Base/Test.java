@@ -15,7 +15,7 @@ public class Test {
     }
 
     public void show2() {
-        System.out.println("你");
+        System.out.println("你好");
     }
 
 }
