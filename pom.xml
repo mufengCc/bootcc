@@ -64,7 +64,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>RELEASE</version>
+            <version>2.5.12</version>
             <scope>compile</scope>
         </dependency>
         <!-- LEGACYHTML5 允许不规范的HTML  搭配使用 -->
